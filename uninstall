@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Uninstalling AEScrypt"
+echo "Removing binary files"
+sudo rm /usr/local/bin/aes
+echo "Removing config files"
+sudo rm -rf /etc/aescrypt
+rm ~/.aescrypt.cnf
+echo "Removing default key file"
+rm ~/.aescrypt.key 
+echo "Done!"
