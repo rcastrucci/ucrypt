@@ -32,6 +32,8 @@ security-conscious software users.<br>
     ./install-mac
 ###### All it does is to create configuration files and check for dependencies.
 
+## Options
+![profile image](https://github.com/rcastrucci/AEScrypt/blob/main/dist/docs/options.png#gh-dark-mode-only)
 
 ## Usage
 ###### The basic approach would be to encrypt using a symmetric key. This can be done with one line command     
