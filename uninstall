@@ -1,9 +1,38 @@
 #!/bin/bash
-echo "Uninstalling AEScrypt"
-echo "Removing user directory"
-sudo rm -rf ~/.aescrypt
-echo "Removing binary files"
-sudo rm /usr/local/bin/aes
-echo "Removing config files"
-sudo rm -rf /etc/aescrypt
-echo "Done!"
+printf "\n\nUninstalling Ucrypt \n\n"
+
+removeKeys()
+{
+    echo $'\nRemoving user keys'
+    sudo rm -rf ~/.ucrypt
+    uninstall
+}
+
+uninstall()
+{
+    echo "Removing binary files"
+    sudo rm /usr/local/bin/ucrypt
+    echo "Removing config files"
+    sudo rm -rf /etc/ucrypt
+    echo "Removing manual page"
+    sudo rm /usr/local/share/man/man1/ucrypt.1
+    echo $'Done! \n'
+}
+
+while true; do
+
+    read -p "Do you want to delete all your keys. (y)Yes/(n)No: " choice
+
+    if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
+        removeKeys
+        break;
+    elif [ "$choice" = "n" ] || [ "$choice" = "N" ]; then
+        printf "\nKeeping keys saved in ~/.ucrypt/keys \n"
+        uninstall
+        break;
+    else
+        printf "\nPlease answer yes or no. \nCtrl+C to abort.\n";
+    fi
+
+done
+

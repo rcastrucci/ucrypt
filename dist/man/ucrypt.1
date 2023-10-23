@@ -1,0 +1,51 @@
+.\" Manpage for Ucrypt
+.\" Contact https://github.com/rcastrucci to correct errors or typos.
+.TH UCRYPT 1 "22 Oct 2023" "1.2" "Ucrypt man page"
+
+.SH NAME
+Ucrypt \-  Data Encryption Software
+
+.SH SYNOPSIS
+ucrypt [-a -e -d -s -ef -df -g -h -k -dk -p -P -x -t -v -pub -pvt -in -out]
+.SH DESCRIPTION
+Ucrypt is a versatile encryption tool, written in Python and designed to meet the demands of the most security-conscious software users.
+.SH OPTIONS
+Usage: ucrypt [[OPTION [ARG]]...]
+.SH
+.SH AES Encryption:
+ -a  --auth                  Create or reset a password to generate key derivative from it
+ -d  --decrypt       [FILE]  Decrypt a file using a key, works with -k, otherwise default key will be used
+ -e  --encrypt       [FILE]  Encrypt a file using a key, works with -k, otherwise default key will be used
+ -s  --save-as       [FILE]  Filename to save the encrypted or decrypted data
+ -ef --enable-factor         Enable second factor to encrypt and decrypt data with auth password
+ -df --disable-factor        Disable second factor to encrypt and decrypt data with auth password
+ -g  --generate-key  [FILE]  Path with filename to generate and store a new key
+                             if no path, default key path stored in config file will be used
+ -h  --help                  List of options and information about Ucrypt
+ -k  --key           [FILE]  Specify a key to be used to encrypt or decrypt
+ -dk --default-key   [FILE]  Set a key as default key
+ -p  --password              Use with -g to generate a derivative key from password
+ -P                  [TEXT]  Password to protect the key as argument on command line
+ -x  --no-pass               Don't use password even if second factor is enabled
+ -t  --status                Display Ucrypt configuration status
+ -v  --version               Show Ucrypt version
+
+
+.SH Hybrid encryption with RSA:
+
+ -pub --encrypt-with [FILE]  Your openssl public key, needs to use with -in and -out options
+ -pvt --decrypt-with [FILE]  Your openssl private key, needs to use with -in and -out options
+ -in                 [DATA]  Your data to be encrypted or decrypted. Can be a file or a directory
+ -out                [FILE]  Filename or directory name to store the encrypted or decrypted data
+                             When encrypted result will always be a single file, when decrypted
+                             it will depend on the encrypted input, if was a directory or a file
+
+
+ Config file location:       /etc/ucrypt/ucrypt.conf
+
+.SH SEE ALSO
+ucrypt(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Renne Castrucci (https://github.com/rcastrucci)
